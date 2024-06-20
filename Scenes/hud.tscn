@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6oglq516jktj"]
+
+[ext_resource type="Script" path="res://Scripts/Hud.cs" id="1_04s22"]
+[ext_resource type="FontFile" uid="uid://cj23mihftggcd" path="res://fonts/Xolonium-Regular.ttf" id="2_2n3yq"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_04s22")
+
+[node name="ScoreValue" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -293.0
+offset_right = 25.0
+offset_bottom = -235.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_2n3yq")
+theme_override_font_sizes/font_size = 48
+text = "0"
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_right = 98.0
+offset_bottom = 78.0
+grow_horizontal = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_2n3yq")
+theme_override_font_sizes/font_size = 64
+text = "Score"
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.5
+offset_top = -39.0
+offset_right = 152.5
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_2n3yq")
+theme_override_font_sizes/font_size = 64
+text = "Message"
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = 140.0
+offset_right = 185.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.721569, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_2n3yq")
+theme_override_font_sizes/font_size = 64
+text = "New Game"
+
+[node name="MessageTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="StartButton" to="." method="OnStartButtonPressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="OnMessageTimerTimeout"]
