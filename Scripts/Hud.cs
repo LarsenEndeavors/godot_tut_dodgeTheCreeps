@@ -13,12 +13,11 @@ public partial class Hud : CanvasLayer
 		message.Hide();
 	}
 	
-	public void ShowMessage(string text)
+	public void ShowMessage(string text, float timeOut = 0)
 	{
 		var message = GetNode<Label>("Message");
 		message.Text = text;
 		message.Show();
-
 		GetNode<Timer>("MessageTimer").Start();
 	}
 
@@ -28,7 +27,7 @@ public partial class Hud : CanvasLayer
 
 		var messageTimer = GetNode<Timer>("MessageTimer");
 		await ToSignal(messageTimer, Timer.SignalName.Timeout);
-		GetNode<Label>("Message").Hide();
+		ShowMessage("Dodge\nthe\nCreeps!", -1);
 
 		await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
 		GetNode<Button>("StartButton").Show();
@@ -36,7 +35,12 @@ public partial class Hud : CanvasLayer
 
 	public void UpdateScore(int score)
 	{
-		GetNode<Label>("ScoreLabel").Text = score.ToString();
+		GetNode<Label>("ScoreValue").Text = score.ToString();
+	}
+
+	public void UpdateStartButtonText(string text)
+	{
+		GetNode<Button>("StartButton").Text = text;
 	}
 
 	public void OnStartButtonPressed()
@@ -48,7 +52,7 @@ public partial class Hud : CanvasLayer
 
 	private void OnMessageTimerTimeout()
 	{
-		GetNode<Label>("Message").Hide();
+		ClearMessage();
 	}
 
 	// Called when the node enters the scene tree for the first time.

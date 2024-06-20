@@ -26,6 +26,7 @@ position = Vector2(240, 450)
 wait_time = 0.5
 
 [node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="StartTimer" type="Timer" parent="."]
 one_shot = true
@@ -38,7 +39,7 @@ curve = SubResource("Curve2D_61m61")
 position = Vector2(-236, -447)
 rotation = -0.00212766
 
-[connection signal="Hit" from="Player" to="Player" method="GameOver"]
+[connection signal="Hit" from="Player" to="." method="GameOver"]
 [connection signal="StartGame" from="HUD" to="." method="NewGame"]
 [connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="OnScoreTimerTimeout"]
