@@ -11,3 +11,6 @@ mono_crash.*.json
 # Editor-specific ignores
 .godot/
 .import/
+
+# Debug Log ignores
+Logs/
