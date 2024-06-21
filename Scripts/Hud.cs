@@ -23,7 +23,7 @@ public partial class Hud : CanvasLayer
 
 	public async void ShowGameOver()
 	{
-		ShowMessage("Game Over");
+		ShowMessage("Get Wrecked");
 
 		var messageTimer = GetNode<Timer>("MessageTimer");
 		await ToSignal(messageTimer, Timer.SignalName.Timeout);
